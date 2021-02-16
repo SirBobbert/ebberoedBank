@@ -1,38 +1,37 @@
 package controller;
 
-import view.BankView;
 import view.CustomerView;
-import view.MainView;
 
 import java.util.Scanner;
 
-public class MainController {
+public class CustomerController {
 
     Scanner scanner = new Scanner(System.in);
-
-MainView m = new MainView();
-
-    BankController bankController = new BankController();
-    CustomerController customerController = new CustomerController();
+    CustomerView customerView = new CustomerView();
 
     boolean program = true;
     int choice;
 
-    public void run() {
+
+    public void runCustomerMenu() {
 
         while (program) {
-            m.showMainMenu();
 
+            customerView.showCustomerMenu();
             choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    customerController.runCustomerMenu();
+                    System.out.println("Withdraw money");
                     break;
                 case 2:
-                    bankController.runBankMenu();
+                    System.out.println("Deposit money");
                     break;
                 case 3:
+                    System.out.println("Check transactions");
+                    break;
+                case 4:
+                    System.out.println("Back");
                     program = false;
                     break;
             }
