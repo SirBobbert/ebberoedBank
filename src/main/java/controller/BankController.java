@@ -1,7 +1,6 @@
 package controller;
 
 import view.BankView;
-import view.CustomerView;
 
 import java.util.Scanner;
 
@@ -16,6 +15,7 @@ public class BankController {
     public void runBankMenu() {
 
         while (program) {
+
             bankView.showBankMenu();
             choice = scanner.nextInt();
 
@@ -24,9 +24,6 @@ public class BankController {
                     System.out.println("Transfer funds");
                     break;
                 case 2:
-                    System.out.println("Check transactions");
-                    break;
-                case 3:
                     System.out.println("Exit");
                     program = false;
                     break;

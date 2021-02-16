@@ -1,7 +1,5 @@
 package controller;
 
-import view.BankView;
-import view.CustomerView;
 import view.MainView;
 
 import java.util.Scanner;

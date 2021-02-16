@@ -30,6 +30,7 @@ PRIMARY KEY(id)
 
 CREATE TABLE accounts(
 id int AUTO_INCREMENT NOT NULL,
+balance int,
 transactionID int,
 customerID int,
 PRIMARY KEY(id),
@@ -66,18 +67,18 @@ VALUES
 (84, 20210210)
 ;
 
-INSERT INTO accounts (transactionID, customerID)
+INSERT INTO accounts (balance, transactionID, customerID)
 VALUES
-(1,1),
-(2,4),
-(3,1),
-(4,3),
-(5,5),
-(6,4),
-(7,2),
-(8,2),
-(9,3),
-(10,3)
+(100, 1,1),
+(5, 2,4),
+(222, 3,1),
+(512, 4,3),
+(21, 5,5),
+(123, 6,4),
+(123, 7,2),
+(6346, 8,2),
+(12, 9,3),
+(126, 10,3)
 ;
 
 SELECT * FROM customers
