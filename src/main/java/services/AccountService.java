@@ -7,4 +7,9 @@ public class AccountService implements IAccountService {
     public void showTransactions() {
 
     }
+
+    @Override
+    public int updateBalance() {
+        return 0;
+    }
 }
