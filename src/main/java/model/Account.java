@@ -2,7 +2,8 @@ package model;
 
 public class Account {
 
-    int transactionsID;
+    private int balance;
+    private int transactionsID;
 
     public Account(int transactionsID) {
         this.transactionsID = transactionsID;
