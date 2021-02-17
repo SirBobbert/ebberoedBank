@@ -2,12 +2,12 @@ package model;
 
 import java.util.Date;
 
-public class Transactions {
+public class Transaction {
 
     private int amount;
     private Date date;
 
-    public Transactions(int amount, Date date) {
+    public Transaction(int amount, Date date) {
         this.amount = amount;
         this.date = date;
     }

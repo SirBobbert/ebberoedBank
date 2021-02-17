@@ -13,11 +13,9 @@ public class CustomerService implements ICustomerService {
     @Override
     public int withdrawFunds(int x) {
 
-<<<<<<< HEAD
-=======
+
         Customer customer = new Customer(0, "bob", "københavn", new Account(100, null));
 
->>>>>>> bobbertBranch
         try {
 
             Connection conn = Connector.connection();
