@@ -9,8 +9,6 @@ public class CustomerService implements ICustomerService{
     @Override
     public int withdrawFunds(int x) {
 
-
-
         try {
 
             Connection conn = Connector.connection();
