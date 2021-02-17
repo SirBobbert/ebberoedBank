@@ -10,6 +10,8 @@ import java.util.List;
 
 public class CustomerService implements ICustomerService {
 
+    List<Customer> allCustomers = getAllCustomers();
+
     @Override
     public int withdrawFunds(int x) {
 
@@ -19,9 +21,10 @@ public class CustomerService implements ICustomerService {
         try {
 
             Connection conn = Connector.connection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM accounts WHERE customerID = ?", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = conn.prepareStatement("UPDATE accounts SET balance = ? WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
 
             stmt.setInt(1, 1);
+            stmt.setInt(2, 1);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -67,22 +70,31 @@ public class CustomerService implements ICustomerService {
                 String name = rs.getString("name");
                 String city = rs.getString("city");
 
-
                 Customer c = new Customer(id, name, city, new Account(0, null));
-
                 customers.add(c);
-
-
             }
 
-            for (Customer i : customers) {
-                System.out.println(i.toString());
-            }
 
         } catch (SQLException | ClassNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
 
         return customers;
+    }
+
+    private Customer loadCustomer(ResultSet rs) throws SQLException {
+        return new Customer(
+                rs.getInt("customer.id"),
+                rs.getString("customer.name"),
+                rs.getString("customer.city"),
+                new Account(0, null)
+        );
+    }
+
+
+    @Override
+    public Customer loginAs(int x) {
+
+        return allCustomers.get(x);
     }
 }

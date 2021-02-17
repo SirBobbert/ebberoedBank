@@ -1,8 +1,10 @@
 package controller;
 
+import model.Customer;
 import services.CustomerService;
 import view.CustomerView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerController {
@@ -16,6 +18,12 @@ public class CustomerController {
 
 
     public void runCustomerMenu() {
+
+        List<Customer> allCustomers = customerService.getAllCustomers();
+
+        customerView.showAllCustomers();
+        int customerChoice = scanner.nextInt();
+        customerService.loginAs(customerChoice);
 
         while (program) {
 

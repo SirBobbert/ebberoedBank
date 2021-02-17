@@ -12,4 +12,6 @@ public interface ICustomerService {
     void checkTransactions();
 
     List<Customer> getAllCustomers();
+
+    Customer loginAs(int x);
 }
