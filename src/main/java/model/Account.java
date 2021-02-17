@@ -5,9 +5,9 @@ import java.util.List;
 public class Account {
 
     private int balance;
-    private List<Transactions> transactionsList;
+    private List<Transaction> transactionsList;
 
-    public Account(int balance, List<Transactions> transactionsList) {
+    public Account(int balance, List<Transaction> transactionsList) {
         this.balance = balance;
         this.transactionsList = transactionsList;
     }
