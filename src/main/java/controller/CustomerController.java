@@ -34,6 +34,9 @@ public class CustomerController {
                     System.out.println("Check transactions");
                     break;
                 case 4:
+                    customerService.getAllCustomers();
+                    break;
+                case 5:
                     System.out.println("Back");
                     program = false;
                     break;
