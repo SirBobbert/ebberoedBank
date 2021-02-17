@@ -78,7 +78,11 @@ VALUES
 (123, 7,2),
 (6346, 8,2),
 (12, 9,3),
-(126, 10,3)
-;
+(126, 10,3);
 
-SELECT * FROM customers
+
+
+SELECT accounts.id AS accountID, customers.id AS customerID, accounts.balance
+FROM customers
+INNER JOIN accounts
+ON customers.id = accounts.id

@@ -17,8 +17,14 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
+                ", account=" + account +
                 '}';
+    }
+
+    public Account getAccount() {
+        return account;
     }
 }

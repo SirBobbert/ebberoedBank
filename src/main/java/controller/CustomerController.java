@@ -23,7 +23,7 @@ public class CustomerController {
 
         customerView.showAllCustomers();
         int customerChoice = scanner.nextInt();
-        customerService.loginAs(customerChoice);
+        Customer customer = customerService.loginAs(customerChoice);
 
         while (program) {
 
@@ -33,7 +33,7 @@ public class CustomerController {
             switch (choice) {
                 case 1:
                     System.out.println("Withdraw money");
-                    customerService.withdrawFunds(0);
+                    customerService.withdrawFunds(customer.getAccount());
                     break;
                 case 2:
                     System.out.println("Deposit money");

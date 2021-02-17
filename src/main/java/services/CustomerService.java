@@ -8,23 +8,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CustomerService implements ICustomerService {
 
+    AccountService accountService = new AccountService();
     List<Customer> allCustomers = getAllCustomers();
 
     @Override
-    public int withdrawFunds(int x) {
-
-
-        Customer customer = new Customer(0, "bob", "københavn", new Account(100, null));
+    public int withdrawFunds(Account account) {
 
         try {
 
             Connection conn = Connector.connection();
             PreparedStatement stmt = conn.prepareStatement("UPDATE accounts SET balance = ? WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
 
-            stmt.setInt(1, 1);
-            stmt.setInt(2, 1);
+            stmt.setInt(1, account.getBalance());
+            stmt.setInt(2, 2);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -37,7 +36,6 @@ public class CustomerService implements ICustomerService {
         } catch (SQLException | ClassNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
-
 
         return 0;
     }
@@ -69,8 +67,9 @@ public class CustomerService implements ICustomerService {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String city = rs.getString("city");
+                Account account = accountService.getAccountByID();
 
-                Customer c = new Customer(id, name, city, new Account(0, null));
+                Customer c = new Customer(id, name, city, account);
                 customers.add(c);
             }
 
@@ -82,19 +81,9 @@ public class CustomerService implements ICustomerService {
         return customers;
     }
 
-    private Customer loadCustomer(ResultSet rs) throws SQLException {
-        return new Customer(
-                rs.getInt("customer.id"),
-                rs.getString("customer.name"),
-                rs.getString("customer.city"),
-                new Account(0, null)
-        );
-    }
-
-
     @Override
     public Customer loginAs(int x) {
 
-        return allCustomers.get(x);
+        return allCustomers.get(x - 1);
     }
 }

@@ -1,11 +1,12 @@
 package services;
 
+import model.Account;
 import model.Customer;
 
 import java.util.List;
 
 public interface ICustomerService {
-    int withdrawFunds(int x);
+    int withdrawFunds(Account account);
 
     int depositFunds();
 
