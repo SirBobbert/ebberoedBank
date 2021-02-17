@@ -1,5 +1,6 @@
 package controller;
 
+import services.CustomerService;
 import view.CustomerView;
 
 import java.util.Scanner;
@@ -8,6 +9,7 @@ public class CustomerController {
 
     Scanner scanner = new Scanner(System.in);
     CustomerView customerView = new CustomerView();
+    CustomerService customerService = new CustomerService();
 
     boolean program = true;
     int choice;
@@ -23,6 +25,7 @@ public class CustomerController {
             switch (choice) {
                 case 1:
                     System.out.println("Withdraw money");
+                    customerService.withdrawFunds(0);
                     break;
                 case 2:
                     System.out.println("Deposit money");

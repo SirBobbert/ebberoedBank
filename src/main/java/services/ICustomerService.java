@@ -1,7 +1,7 @@
 package services;
 
 public interface ICustomerService {
-    int withdrawFunds();
+    int withdrawFunds(int x);
 
     int depositFunds();
 
