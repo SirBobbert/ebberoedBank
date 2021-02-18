@@ -12,6 +12,10 @@ public class Transaction {
         this.date = date;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     @Override
     public String toString() {
         return "Transactions{" +

@@ -1,7 +1,10 @@
 package controller;
 
+import model.Account;
 import model.Customer;
+import services.AccountService;
 import services.CustomerService;
+import services.IAccountService;
 import view.CustomerView;
 
 import java.util.List;
@@ -12,14 +15,15 @@ public class CustomerController {
     Scanner scanner = new Scanner(System.in);
     CustomerView customerView = new CustomerView();
     CustomerService customerService = new CustomerService();
+    IAccountService accountService = new AccountService();
 
     boolean program = true;
     int choice;
+    int amount;
+    Account currentAccount;
 
 
     public void runCustomerMenu() {
-
-        List<Customer> allCustomers = customerService.getAllCustomers();
 
         customerView.showAllCustomers();
         int customerChoice = scanner.nextInt();
@@ -32,11 +36,19 @@ public class CustomerController {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Withdraw money");
-                    customerService.withdrawFunds(customer.getAccount());
+                    System.out.println("Withdraw funds");
+                    customerView.promptForAmountToWithdraw();
+                    amount = scanner.nextInt();
+                    currentAccount = customer.getAccount();
+                    accountService.withdrawFunds(currentAccount, amount);
                     break;
                 case 2:
                     System.out.println("Deposit money");
+                    customerView.promptForAmountToDeposit();
+                    amount = scanner.nextInt();
+                    currentAccount = customer.getAccount();
+                    accountService.depositFunds(currentAccount, amount);
+                    System.out.println(currentAccount.getBalance());
                     break;
                 case 3:
                     System.out.println("Check transactions");

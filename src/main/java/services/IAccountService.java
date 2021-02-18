@@ -8,5 +8,9 @@ public interface IAccountService {
 
     int updateBalance();
 
+    int withdrawFunds(Account account, int amount);
+
+    int depositFunds(Account account, int amount);
+
     Account getAccountByID();
 }

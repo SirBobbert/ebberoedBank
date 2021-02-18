@@ -30,4 +30,12 @@ public class CustomerView {
         System.out.println("Choose which customer you want to log in as:");
     }
 
+    public void promptForAmountToWithdraw() {
+        System.out.println("Please enter the amount you want to withdraw from your account");
+    }
+
+    public void promptForAmountToDeposit() {
+        System.out.println("Please enter the amount you want to deposit to your account");
+    }
+
 }
