@@ -12,5 +12,5 @@ public interface IAccountService {
 
     int depositFunds(Account account, int amount);
 
-    Account getAccountByID();
+    Account getAccountByID(int id);
 }

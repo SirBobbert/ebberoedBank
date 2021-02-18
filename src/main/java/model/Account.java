@@ -28,6 +28,7 @@ public class Account {
     }
 
     public int getBalance() {
+        balance = 0;
         for (Transaction i : transactionsList) {
             balance += i.getAmount();
         }

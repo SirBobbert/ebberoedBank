@@ -58,6 +58,7 @@ public class CustomerService implements ICustomerService {
     public List<Customer> getAllCustomers() {
 
         List<Customer> customers = new ArrayList<>();
+        int id;
 
         try {
 
@@ -68,10 +69,10 @@ public class CustomerService implements ICustomerService {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                id = rs.getInt("id");
                 String name = rs.getString("name");
                 String city = rs.getString("city");
-                Account account = accountService.getAccountByID();
+                Account account = accountService.getAccountByID(id);
 
                 Customer c = new Customer(id, name, city, account);
                 customers.add(c);

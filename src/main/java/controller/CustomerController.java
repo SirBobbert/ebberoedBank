@@ -41,6 +41,7 @@ public class CustomerController {
                     amount = scanner.nextInt();
                     currentAccount = customer.getAccount();
                     accountService.withdrawFunds(currentAccount, amount);
+                    System.out.println(currentAccount);
                     break;
                 case 2:
                     System.out.println("Deposit money");
@@ -48,7 +49,7 @@ public class CustomerController {
                     amount = scanner.nextInt();
                     currentAccount = customer.getAccount();
                     accountService.depositFunds(currentAccount, amount);
-                    System.out.println(currentAccount.getBalance());
+                    System.out.println(currentAccount);
                     break;
                 case 3:
                     System.out.println("Check transactions");
